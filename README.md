@@ -26,6 +26,18 @@ Environment variables need to be declared for the following:
 
 ---
 
+## Network Configuration
+
+```
+| Service      | Host Port    | Container Port |
+| ------------ | ------------ | ------------   |
+| web          | 3001         | 3000           |
+| api server   | 5001         | 5000           |
+| db           | 5433         | 5432           |
+```
+
+---
+
 ## Running the project
 
 Start up the project by running:
