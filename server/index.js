@@ -23,8 +23,25 @@ app.post("/api/todos", async (req, res) => {
 //get all todos
 
 app.get("/api/todos", async (req, res) => {
+
     const allTodos = await pool.query("SELECT * FROM todo");
-    res.json(allTodos.rows);
+    return res.json(allTodos.rows);
+    // const allTodos = await pool.query("SELECT * FROM todo")
+    // .then(data => res.send(data))
+    // .catch(err => { // error handling logic 1
+    //     console.error(err) // logging error
+    //     res.status(500).send(err)
+    // })
+
+
+});
+
+// Set default API response
+app.get('/api/todo', function (req, res) {
+    res.json({
+        status: 'todo API is working',
+        message: 'Welcome to the todo api'
+    });
 });
 
 //get a todo
@@ -58,6 +75,11 @@ app.delete("/api/todos/:id", async (req, res) => {
     ]);
     res.json("Todo was deleted!");
 });
+
+// unexpected routes
+app.use('/api/*', (req, res) => {
+    return res.status(400).json({ message: 'Bad Request' })
+  })
 
 app.listen(5000, () => {
     console.log("server has started on port 5000");

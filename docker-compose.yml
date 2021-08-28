@@ -9,32 +9,23 @@ services:
             - server
         volumes:            
             - ./web:/app/             
-            - /app/node_modules      
-        networks:
-            - app-network
+            - /app/node_modules
     server:
         build:            
             context: ./server            
         ports:
-            - '5001:5000'        
+            - '5001:5000'                   
         depends_on:             
             - db
         volumes:            
             - ./server:/app            
-            - /app/node_modules
-        networks:
-            - app-network        
+            - /app/node_modules        
     db:
         build:            
             context: ./db        
         volumes: 
             - db-volume:/var/lib/postgresql/data
         ports:            
-            - '5433:5432'
-        networks:
-            - app-network        
+            - '5433:5432'       
 volumes:
     db-volume:
-networks:
-    app-network:
-        driver: bridge
