@@ -1,22 +1,34 @@
-# This code is forked from [here](https://github.com/l0609890/pern-todo-app)
+# APP-TODO-AUTH
 
-There is an associated tutorial [here](https://www.youtube.com/watch?v=ldYcgPKEZC8) if you need a quick refresher.
+An experimental project utilising a dockerised PERN stack. The project implements security features including:
 
-Use your fork of this to experiment and follow along with WDD03 videos.
-We will Dockerize, swaggerize, authenticate, and deploy this app, and you can use this as inspiration when you come to work on your group project.
+    - ExpressJS Gateway
+    - Auth0
+    - express-validation
+    - a.n. other
 
-<img src="https://www.freecodecamp.org/news/content/images/size/w2000/2020/03/PERN.png" />
+---
 
-## Run PostgreSQL
+## Setup requirements
 
-Start a PostgreSQL container to get your database running:
+Environment variables need to be declared for the following:
 
+    - In the web folder: 
+        - An API url declaration
+        - Auth0 site key
+    - In the server folder: 
+        - Database connection variables
+        - Auth0 secret key
+
+---
+
+### The react web client code is forked from [here](https://github.com/l0609890/pern-todo-app)
+
+---
+
+## Running the project
+
+Start up the project by running:
 ```zsh
-docker run -d \
-  --name pern-todo-db \
-  -p 5432:5432 \
-  -e POSTGRES_PASSWORD=password \
-  -v pern-todo-db:/var/lib/postgresql/data \
-  -d \
-  postgres
+docker-compose up
 ```
