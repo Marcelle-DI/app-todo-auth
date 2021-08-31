@@ -7,6 +7,11 @@ An experimental project utilising a dockerised PERN stack. The project implement
     - express-validation
     - a.n. other
 
+The final app architecture shall look like this:
+
+![APP-TODO-AUTH ARCHITECTURE](/img/app-architecture.png)
+
+
 ---
 
 ## Setup requirements
