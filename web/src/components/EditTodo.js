@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+require('dotenv').config();
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
@@ -10,7 +11,7 @@ const EditTodo = ({ todo }) => {
     try {
       const body = { description };
       const response = await fetch(
-        `http://localhost:5001/api/todos/${todo.todo_id}`,
+        `${process.env.REACT_APP_API_URL}/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
