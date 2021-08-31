@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-
 import EditTodo from "./EditTodo";
+require('dotenv').config();
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
@@ -9,7 +9,7 @@ const ListTodos = () => {
 
   const deleteTodo = async id => {
     try {
-      const deleteTodo = await fetch(`http://localhost:5001/api/todos/${id}`, {
+      const deleteTodo = await fetch(`${process.env.REACT_APP_API_URL}/todos/${id}`, {
         method: "DELETE"
       });
 
@@ -21,7 +21,7 @@ const ListTodos = () => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/todos");
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/todos`);
       const jsonData = await response.json();
 
       setTodos(jsonData);

@@ -6,9 +6,19 @@ services:
         ports:
             - '3001:3000'
         depends_on:
-            - server
+            - gateway
         volumes:            
             - ./web:/app/             
+            - /app/node_modules
+    gateway:
+        build:            
+            context: ./gateway            
+        ports:
+            - '8081:8080'                   
+        depends_on:             
+            - server
+        volumes:            
+            - ./gateway:/app            
             - /app/node_modules
     server:
         build:            
