@@ -40,6 +40,7 @@ Environment variables need to be declared for the following:
 | Service      | Host Port    | Container Port |
 | ------------ | ------------ | ------------   |
 | web          | 3001         | 3000           |
+| api gateway  | 8081         | 8080           |
 | api server   | 5001         | 5000           |
 | db           | 5433         | 5432           |
 ```
