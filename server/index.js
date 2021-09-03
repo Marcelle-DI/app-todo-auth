@@ -2,10 +2,33 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const morgan = require('morgan');
+const uuid = require('node-uuid');
+const path = require('path');
+const rfs = require('rotating-file-stream'); // version 2.x
+
+// setup morgan for logging
+// create an id token
+const mt = morgan.token('id', getId = (req) => {
+  return req.id;
+});
+ 
+const assignId = (req, res, next) => {
+  req.id = uuid.v4();
+  next();
+}
+
+// create a rotating write stream
+const accessLogStream = rfs.createStream('access.log', {
+    interval: '1d', // rotate daily
+    path: path.join(__dirname, 'log')
+  })
 
 //middleware
 app.use(cors());
 app.use(express.json()); //req.body
+app.use(assignId); // assign uuid to each request 
+app.use(morgan(':id :method :url :status :res[content-length] :response-time', { stream: accessLogStream })); //setup the logger
 
 //ROUTES//
 
@@ -26,13 +49,6 @@ app.get("/api/todos", async (req, res) => {
 
     const allTodos = await pool.query("SELECT * FROM todo");
     return res.json(allTodos.rows);
-    // const allTodos = await pool.query("SELECT * FROM todo")
-    // .then(data => res.send(data))
-    // .catch(err => { // error handling logic 1
-    //     console.error(err) // logging error
-    //     res.status(500).send(err)
-    // })
-
 
 });
 
