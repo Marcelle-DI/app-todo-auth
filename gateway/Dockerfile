@@ -10,4 +10,4 @@ RUN ["npm", "install"]
 # expose a port
 EXPOSE 8080
 # run this command at entrypoint/on start
-ENTRYPOINT ["npm", "run", "start:dev"]
+ENTRYPOINT ["npm", "start"]
