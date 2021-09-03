@@ -3,12 +3,9 @@
 An experimental project utilising a dockerised PERN stack. The project implements security features to minimise the [OWASP top 10 security risks](https://owasp.org/www-project-top-ten/) including:
 
     - ExpressJS Gateway
-    - Auth0
-    - express-validation
-    - Object Level Authorisation definition
-    - User Authentication and Authorisation
-    - Limiting data property exposure
-    - Log all failed authentication attempts, denied access, and input validation errors.
+    - Auth0 for user Authentication and Authorisation
+    - Express-validation for input validation and sanitisation
+    - Morgan for logging failed authentication attempts, denied access, and input validation errors.
 
 The final app architecture shall look like this:
 
