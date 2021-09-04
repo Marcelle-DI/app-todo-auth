@@ -19,6 +19,8 @@ const EditTodo = ({ todo }) => {
         }
       );
 
+      console.log(response.json());
+
       window.location = "/";
     } catch (err) {
       console.error(err.message);

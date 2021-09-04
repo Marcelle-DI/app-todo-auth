@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const InputTodo = () => {
   const [description, setDescription] = useState("");
+  //const [feedback, setFeedback] = useState("");
 
   const onSubmitForm = async e => {
     e.preventDefault();
@@ -14,7 +15,14 @@ const InputTodo = () => {
         body: JSON.stringify(body)
       });
 
-      window.location = "/";
+      const todoPosted = await response.json();
+
+      if (todoPosted.success) {      
+        window.location = "/";
+      } else {
+        console.error("unsupported input...");
+      }
+
     } catch (err) {
       console.error(err.message);
     }
