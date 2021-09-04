@@ -13,6 +13,8 @@ const ListTodos = () => {
         method: "DELETE"
       });
 
+      console.log(deleteTodo.json());
+
       setTodos(todos.filter(todo => todo.todo_id !== id));
     } catch (err) {
       console.error(err.message);
